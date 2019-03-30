@@ -1,0 +1,14 @@
+galaxy_info:
+  role_name: nzbget
+  author: Mat Pataki
+  description: 'installs, configures, and runs nzbget'
+  company: 'n/a'
+  license: MIT
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+
+dependencies: []

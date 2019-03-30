@@ -1,0 +1,7 @@
+---
+
+- name: restart nzbget
+  service:
+    name: nzbget
+    state: restarted
+  become: true

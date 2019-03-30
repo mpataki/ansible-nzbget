@@ -1,0 +1,48 @@
+---
+
+- name: download nzbget install script
+  get_url:
+    url: "https://github.com/nzbget/nzbget/releases/download/v{{ version }}/nzbget-{{ version }}-bin-linux.run"
+    dest: /opt
+    mode: 770
+  become: true
+
+- name: run the install script
+  command: "sh /opt/nzbget-{{ version }}-bin-linux.run --destdir /opt/nzbget"
+  register: install_output
+  become: true
+
+#- debug:
+#    msg: "{{ install_output }}"
+
+- name: copy the nzbget config file
+  template:
+    src: templates/nzbget.conf
+    dest: /opt/nzbget/nzbget.conf
+    owner: pi
+    group: pi
+  become: true
+  notify: restart nzbget
+
+- name: chown nzbget files
+  file:
+    path: /opt/nzbget
+    owner: pi
+    group: pi
+    recurse: true
+  become: true
+
+- name: install systemd unit for nzbget
+  copy:
+    src: files/nzbget.service
+    dest: /etc/systemd/system/nzbget.service
+    owner: root
+    group: root
+  become: true
+
+- name: start and enable nzbget service
+  systemd:
+    name: nzbget
+    state: started
+    enabled: true
+  become: true

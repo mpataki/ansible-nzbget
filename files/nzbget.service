@@ -1,0 +1,17 @@
+[Unit]
+Description=NZBGet
+After=network.target
+RequiresMountsFor=/mnt
+
+[Service]
+User=pi
+Group=pi
+Type=forking
+ExecStart=/opt/nzbget/nzbget -c /opt/nzbget/nzbget.conf -D
+ExecStop=/opt/nzbget/nzbget -Q
+ExecReload=/opt/nzbget/nzbget -O
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

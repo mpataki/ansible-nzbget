@@ -1,0 +1,34 @@
+---
+
+version: '20.0'
+main_dir: '${AppDir}/downloads'
+dest_dir: '${MainDir}/completed'
+inter_dir: '${MainDir}/intermediate'
+username: 'nzbget'
+password: 'tegbzn6789'
+news_servers:
+  - id: 1
+    active: 'yes' # default
+    name: '' # default
+    level: 0 # default
+    optional: 'no' # default
+    group: 0 # default
+    host: my.newsserver.com
+    port: 119
+    username: user
+    password: pass
+    join_group: 'no' # default
+    encryption: 'no' # default
+    cipher: '' # default
+    connections: 4 # default
+    retention: 0 # default
+    ip_version: auto # default
+    notes: '' # default
+categories:
+  - id: 1
+    name: movies
+    destination: movies
+  - id: 2
+    name: shows
+    destination: shows
+
