@@ -1,5 +1,7 @@
 # ansible-nzbget
 
+[![Build Status](https://travis-ci.org/mpataki/ansible-nzbget.svg?branch=master)](https://travis-ci.org/mpataki/ansible-nzbget)
+
 This roles installs, configures, and runs [nzbget](https://nzbget.net://nzbget.net/).
 
 ## Requirements
